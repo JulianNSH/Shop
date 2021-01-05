@@ -6,13 +6,19 @@ import static java.lang.System.exit;
 
 public class BuyersCC {
     int idBuyer;
-    String Name;
-    String Surname;
+    String nameBuyer;
+    String[] nameBuyerArr;
+
+    String surnameBuyer;
+    String[] surnameBuyerArr;
+
     double acquisitions;
+    double[] acquisitionsArr;
+
     double discount;
+    double[] discountArr;
 
     BuyersCC(){}
-
     int i = 0;
     Scanner scn = new Scanner(System.in);
 
@@ -37,10 +43,42 @@ public class BuyersCC {
         return 0;
     }
     void createBuyersData(){
+        System.out.println("\n+======BUYERS CREATE======+");
+        System.out.println(" Number Of ClubBuyers>>> ");
+        int i = scn.nextInt();
 
+        nameBuyerArr = new String[i];
+        surnameBuyerArr = new String[i];
+        acquisitionsArr = new double[i];
+        discountArr = new double[i];
+
+        for (int j = 0; j<i; j++){
+            System.out.printf("Buyer Nr-%s\n", j+1);
+            System.out.println("*BuyerName: ");
+            nameBuyerArr[j] = scn.next();
+            System.out.println("*BuyerSurname: ");
+            surnameBuyerArr[j] = scn.next();
+            System.out.println("*Acquisitions: ");
+            acquisitionsArr[j] = scn.nextDouble();
+            System.out.println("*Discount: ");
+            discountArr[j] = scn.nextDouble();
+        }
         buyersMenu();
     }
     void showBuyersData(){
+        System.out.println("\n+======LIST OF BUYERS WITH CLUB CARD======+");
+        System.out.print(  "|NameBuyer      |SurnameBuyer   |Acquisitions  |Discount  |\n");
+        System.out.println("|---------------------------------------------------------|");
+        if(nameBuyerArr != null) {
+            for(int j=0; j<nameBuyerArr.length; j++) {
+
+                System.out.printf("|%-15s",nameBuyerArr[j]); System.out.printf("|%-15s",surnameBuyerArr[j]);
+                System.out.printf("|%-14s",acquisitionsArr[j]);System.out.printf("|%-10s|\n",discountArr[j]);
+            }
+        } else {
+            System.out.println("!!!Empty Data!!!");
+        }
+        System.out.println("|---------------------------------------------------------|");
         buyersMenu();
     }
 

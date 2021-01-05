@@ -5,3 +5,6 @@
 	This will ensure that the data of the created entity is saved in memory, 
 	it will allow the operation with other entities and a further return 
 	to the data already saved.
+
+>>>1.2 (console)  Has been added the ability to enter and display entity data.
+                (Also was added succinct comments)

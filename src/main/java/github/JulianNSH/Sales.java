@@ -6,9 +6,17 @@ import static java.lang.System.exit;
 public class Sales {
     int idSale;
     int idProduct;
-    String nameProduct;
+    String nameProductSale;
+    String[] nameProductSaleArr;
+
+    double productPriceBeforeSale;
+    double[] productPriceBeforeSaleArr;
+
     double discount;
-    double priceDiscount;
+    double[] discountArr;
+
+    double priceAfterDiscount;
+    double[] priceAfterDiscountArr;
 
     Sales(){}
 
@@ -36,10 +44,41 @@ public class Sales {
         return 0;
     }
     void createSalesData(){
+        System.out.println("\n+======SALES CREATE======+");
+        System.out.println(" Number of SALES>>> ");
+        int i = scn.nextInt();
 
+        nameProductSaleArr = new String[i];
+        discountArr = new double[i];
+        priceAfterDiscountArr = new double[i];
+
+        for (int j = 0; j<i; j++){
+            System.out.printf("SALE Nr-%s\n", j+1);
+            System.out.println("*ProductForSale: ");
+            nameProductSaleArr[j] = scn.next();
+            System.out.println("*ProductPrice %: ");
+            productPriceBeforeSaleArr[j] = scn.nextDouble();
+            System.out.println("*Discount %: ");
+            discountArr[j] = scn.nextDouble();
+            System.out.println("*PriceAfterDiscount: ");
+            priceAfterDiscountArr[j] = scn.nextDouble();
+        }
         salesMenu();
     }
     void showSalesData(){
+        System.out.println("\n+======LIST PRODUCTS FOR SALE======+");
+        System.out.print(  "|Product          |Price      |Discount %   |PriceWithDiscount    |\n");
+        System.out.println("|-----------------------------------------------------------------|");
+        if(nameProductSaleArr != null) {
+            for(int j=0; j<nameProductSaleArr.length; j++) {
+
+                System.out.printf("|%-17s",nameProductSaleArr[j]);System.out.printf("|%-11s",productPriceBeforeSaleArr[j]);
+                System.out.printf("|%-13s",discountArr[j]);  System.out.printf("|%-21s|\n",priceAfterDiscountArr[j]);
+            }
+        } else {
+            System.out.println("!!!Empty Data!!!");
+        }
+        System.out.println("|-----------------------------------------------------------------|");
         salesMenu();
     }
 }

@@ -10,6 +10,6 @@ package github.JulianNSH;
 public class Shop {
     public static void main(String[] args) {
         Menu start = new Menu();
-        start.showMenu();
+        start.showMenu();           //call the menu method
     }
 }

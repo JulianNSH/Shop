@@ -3,6 +3,7 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Menu {
+    //objects for further using in menu
     Employees employees = new Employees();
     Products products = new Products();
     ProductGroups productGroups = new ProductGroups();
@@ -11,8 +12,10 @@ public class Menu {
 
     int i = 0;
     Scanner scn = new Scanner(System.in);
+
     Menu(){}
 
+    // main menu that binds all entities
     void showMenu(){
 
         System.out.println("\n+=========MAIN MENU=========+");
@@ -26,6 +29,8 @@ public class Menu {
         System.out.println("Enter Option>>> ");
 
         i = scn.nextInt();
+
+        // call menu methods from another classes
         switch (i){
             case 1: employees.employeeMenu();           showMenu(); break;
             case 2: products.productsMenu();            showMenu(); break;
