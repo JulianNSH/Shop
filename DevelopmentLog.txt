@@ -8,3 +8,5 @@
 
 >>>1.2 (console)  Has been added the ability to enter and display entity data.
                 (Also was added succinct comments)
+
+>>>1.3 (console) Has been added the Modify and Delete options

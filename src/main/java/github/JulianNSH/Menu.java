@@ -16,7 +16,7 @@ public class Menu {
     Menu(){}
 
     // main menu that binds all entities
-    void showMenu(){
+    public void showMenu(){
 
         System.out.println("\n+=========MAIN MENU=========+");
         System.out.println("|<1>Employees               |");

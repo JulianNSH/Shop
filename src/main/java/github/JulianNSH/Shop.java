@@ -1,11 +1,10 @@
 package github.JulianNSH;
-/*                  PHASE I
+/*
 *               SHOP APPLICATION
 *                  (console)
+*                  PHASE II
 *
-*  Console application that allows the user to enter
-*  the information about the entities from the keyboard
-*  and stores the information in the memory
+*   Add the functionality to read/write/update information to a physical file
 */
 public class Shop {
     public static void main(String[] args) {

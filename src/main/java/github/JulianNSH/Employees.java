@@ -1,4 +1,6 @@
 package github.JulianNSH;
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.Scanner;
 import static java.lang.System.exit;
 
@@ -7,23 +9,17 @@ import static java.lang.System.exit;
  */
 
 public class Employees {
-    //declaring the basic variables of the entity
-    int idemployee; // will be used for linking in DB
+    //declaring the basic variables(arrays) of the entity
 
-    String name;// also for DB
-    String[] nameArr;// actual for holding info in memory
+    private String[] nameArr;// array for holding info in memory
 
-    String surname;
-    String[] surnameArr;
+    private String[] surnameArr;
 
-    String position;
-    String[] positionArr;
+    private String[] positionArr;
 
-    int age;
-    int[] ageArr;
+    private int[] ageArr;
 
-    double salary;
-    double[] salaryArr;
+    private double[] salaryArr;
 
     Employees(){}
 
@@ -31,12 +27,14 @@ public class Employees {
     Scanner scn = new Scanner(System.in);
 
     //menu method which is called in the main menu
-    int employeeMenu(){
+    public int employeeMenu(){
 
         System.out.println("\n+=========EMPLOYEES=========+");
         System.out.println("|<1>Create                  |");
         System.out.println("|<2>Show                    |");
-        System.out.println("|<3>                  <<Back|");
+        System.out.println("|<3>Modify                  |");
+        System.out.println("|<4>Delete                  |");
+        System.out.println("|<5>                  <<Back|");
         System.out.println("|<0>Exit                    |");
         System.out.println("+===========================+");
         System.out.println("Enter Option>>> ");
@@ -45,7 +43,9 @@ public class Employees {
         switch (i){
             case 1: createEmployeesData(); break;
             case 2: showEmployeesData();  break;
-            case 3: return 0; // return to the previous menu
+            case 3: modifyEmployeesData(); break;
+            case 4: deleteEmployeesData(); break;
+            case 5: return 0; // return to the previous menu
             case 0: exit(0); break; //forced exit
             default:
                 System.out.println("!!!Invalid Input!!!"); employeeMenu(); //recursive call
@@ -53,7 +53,7 @@ public class Employees {
         return 0;
     }
     //method for creating data
-    void createEmployeesData(){
+    private void createEmployeesData(){
         System.out.println("\n+======EMPLOYEES CREATE======+");
         System.out.println(" Number Of Employees>>> ");
         int i = scn.nextInt();
@@ -67,40 +67,90 @@ public class Employees {
 
         //completing the arrays
         for (int j = 0; j<i; j++){
-            System.out.printf("Employee Nr-%s\n", j+1);
-            System.out.println("*Name: ");
-            nameArr[j] = scn.next();
-            System.out.println("*Surname: ");
-            surnameArr[j] = scn.next();
-            System.out.println("*Position: ");
-            positionArr[j] = scn.next();
-            System.out.println("*Age: ");
-            ageArr[j] = scn.nextInt();
-            System.out.println("*Salary: ");
-            salaryArr[j] = scn.nextDouble();
+            assignInputToArray(j);
         }
 
         employeeMenu(); //return to the previous menu
     }
 
+    private void modifyEmployeesData(){
+        //check if data arrays isn't empty
+        if(nameArr != null){
+            System.out.println("\n+======EMPLOYEES MODIFY======+");
+            System.out.println(" Input ID to modify>>> ");
+            int i = scn.nextInt()-1;
+
+            //check if array with input ID exists
+            if(i>=0 && i<nameArr.length){
+                assignInputToArray(i);
+                System.out.println("~Employee data was modified successfully~");
+            } else {
+                System.out.println("!!!Input ID doesn't exist!!!");
+            }
+        } else {
+            System.out.println("!!!Empty Data!!!");
+        }
+        employeeMenu();
+    }
+
+    private void deleteEmployeesData(){
+        //check if data arrays isn't empty
+        if(nameArr != null){
+            System.out.println("\n+======EMPLOYEES DELETE======+");
+            System.out.println(" Input ID to delete>>> ");
+            int i = scn.nextInt()-1;
+
+            //check if array with input ID exists
+            if(i>=0 && i<nameArr.length){
+                nameArr = ArrayUtils.remove(nameArr, i); //using method from imported library
+                surnameArr = ArrayUtils.remove(surnameArr, i);
+                positionArr = ArrayUtils.remove(positionArr, i);
+                ageArr = ArrayUtils.remove(ageArr, i);
+                salaryArr = ArrayUtils.remove(salaryArr, i);
+
+                System.out.println("~Employee data was deleted successfully~");
+
+            } else {
+                System.out.println("!!!Input ID doesn't exist!!!");
+            }
+        } else {
+            System.out.println("!!!Empty Data!!!");
+        }
+        employeeMenu();
+    }
+
     //method for output the data in console
-    void showEmployeesData(){
+    private void showEmployeesData(){
         System.out.println("\n+======LIST OF EMPLOYEES======+");
-        System.out.print(  "|Name      |Surname   |Position  |Age|Salary  |\n");
-        System.out.println("|---------------------------------------------|");
+        System.out.print(  "|ID  |Name      |Surname   |Position  |Age|Salary  |\n");
+        System.out.println("|--------------------------------------------------|");
 
         //output the data if array isn`t empty
         if(nameArr != null) {
            for(int j=0; j<nameArr.length; j++) {
 
-               System.out.printf("|%-10s",nameArr[j]); System.out.printf("|%-10s",surnameArr[j]); System.out.printf("|%-10s",positionArr[j]);
-               System.out.printf("|%-3s",ageArr[j]); System.out.printf("|%-8s|\n",salaryArr[j]);
+               System.out.printf("|%-4s", j+1); System.out.printf("|%-10s",nameArr[j]); System.out.printf("|%-10s",surnameArr[j]);
+               System.out.printf("|%-10s",positionArr[j]);System.out.printf("|%-3s",ageArr[j]); System.out.printf("|%-8s|\n",salaryArr[j]);
             }
         } else {
             System.out.println("!!!Empty Data!!!");
         }
-        System.out.println("|---------------------------------------------|");
+        System.out.println("|--------------------------------------------------|");
         employeeMenu();
     }
 
+    //method for input data, used to avoid code repeat
+    private void assignInputToArray(int index){
+        System.out.printf("Employee ID-%s\n", index+1);
+        System.out.println("*Name: ");
+        nameArr[index] = scn.next();
+        System.out.println("*Surname: ");
+        surnameArr[index] = scn.next();
+        System.out.println("*Position: ");
+        positionArr[index] = scn.next();
+        System.out.println("*Age: ");
+        ageArr[index] = scn.nextInt();
+        System.out.println("*Salary: ");
+        salaryArr[index] = scn.nextDouble();
+    }
 }
