@@ -10,3 +10,6 @@
                 (Also was added succinct comments)
 
 >>>1.3 (console) Has been added the Modify and Delete options
+
+>>>2.1 (console) Has been added Import and Export features
+                (Was used Document Object Model (DOM) Parser to operate with XML files)

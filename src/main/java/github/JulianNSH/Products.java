@@ -9,14 +9,20 @@ import static java.lang.System.exit;
 
 public class Products {
 
-    private String[] productGroupArr;
+    public static String[] productGroupArr;
 
-    private String[] productNameArr;
+    public static String[] productNameArr;
 
-    private double[] priceArr;
+    public static double[] priceArr;
 
     Products(){}
 
+    //method that alloc array dimensions, used for importing data from XML file
+    public void allocateMemory(int index){
+        productGroupArr = new String[index];
+        productNameArr = new String[index];
+        priceArr = new double[index];
+    }
      int i = 0;
     Scanner scn = new Scanner(System.in);
 

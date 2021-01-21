@@ -8,16 +8,24 @@ import static java.lang.System.exit;
 
 public class BuyersCC {
 
-    private String[] nameBuyerArr;
+    public static String[] nameBuyerArr;
 
-    private String[] surnameBuyerArr;
+    public static String[] surnameBuyerArr;
 
-    private double[] acquisitionsArr;
+    public static double[] acquisitionsArr;
 
-    private double[] discountArr;
+    public static double[] discountArr;
 
     BuyersCC(){}
-    int i = 0;
+
+    //method that alloc array dimensions, used for importing data from XML file
+    public void allocateMemory(int index){
+        nameBuyerArr = new String[index];
+        surnameBuyerArr = new String[index];
+        acquisitionsArr = new double[index];
+        discountArr = new double[index];
+    }
+
     Scanner scn = new Scanner(System.in);
 
     public int buyersMenu(){
@@ -31,7 +39,7 @@ public class BuyersCC {
         System.out.println("+===========================+");
         System.out.println("Enter Option>>> ");
 
-        i=scn.nextInt();
+        int i=scn.nextInt();
         switch (i){
             case 1: createBuyersData(); break;
             case 2: showBuyersData();  break;

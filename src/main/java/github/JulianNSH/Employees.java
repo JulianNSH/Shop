@@ -11,17 +11,25 @@ import static java.lang.System.exit;
 public class Employees {
     //declaring the basic variables(arrays) of the entity
 
-    private String[] nameArr;// array for holding info in memory
+    public static String[] nameArr;// array for holding info in memory
 
-    private String[] surnameArr;
+    public static String[] surnameArr;
 
-    private String[] positionArr;
+    public static  String[] positionArr;
 
-    private int[] ageArr;
+    public static  int[] ageArr;
 
-    private double[] salaryArr;
+    public static  double[] salaryArr;
 
     Employees(){}
+    //method that alloc array dimensions, used for importing data from XML file
+    public void allocateMemory(int index){
+        nameArr = new String[index];
+        surnameArr = new String[index];
+        positionArr = new String[index];
+        ageArr = new int[index];
+        salaryArr = new double[index];
+    }
 
     int i;
     Scanner scn = new Scanner(System.in);

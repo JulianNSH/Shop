@@ -8,11 +8,16 @@ import static java.lang.System.exit;
 
 public class ProductGroups {
 
-    private String[] groupNameArr;
+    public static String[] groupNameArr;
 
-    private int[] numberOfUnitsArr;
+    public static int[] numberOfUnitsArr;
 
     ProductGroups(){}
+    //method that alloc array dimensions, used for importing data from XML file
+    public void allocateMemory(int index){
+        groupNameArr = new String[index];
+        numberOfUnitsArr = new int[index];
+    }
 
     int i = 0;
     Scanner scn = new Scanner(System.in);

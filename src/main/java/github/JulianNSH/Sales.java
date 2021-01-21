@@ -7,17 +7,23 @@ import static java.lang.System.exit;
 
 public class Sales {
 
-    private String[] nameProductSaleArr;
+    public static String[] nameProductSaleArr;
 
-    private double[] productPriceBeforeSaleArr;
+    public static double[] productPriceBeforeSaleArr;
 
-    private double[] discountArr;
+    public static double[] discountArr;
 
-    private double[] priceAfterDiscountArr;
+    public static double[] priceAfterDiscountArr;
 
     Sales(){}
 
-    int i = 0;
+    //method that alloc array dimensions, used for importing data from XML file
+    public void allocateMemory(int index){
+        nameProductSaleArr = new String[index];
+        productPriceBeforeSaleArr = new double[index];
+        priceAfterDiscountArr = new double[index];
+        discountArr = new double[index];
+    }
     Scanner scn = new Scanner(System.in);
 
     public int salesMenu(){
@@ -31,7 +37,7 @@ public class Sales {
         System.out.println("+===========================+");
         System.out.println("Enter Option>>> ");
 
-        i=scn.nextInt();
+        int i=scn.nextInt();
         switch (i){
             case 1: createSalesData(); break;
             case 2: showSalesData();  break;
