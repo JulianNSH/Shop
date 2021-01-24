@@ -18,6 +18,7 @@ public class Menu {
     //objects for Import/Export existent data
     ImportDataFromXML imp = new ImportDataFromXML();
     ExportDataToXML exp = new ExportDataToXML();
+    UpdateDataFromXML upd = new UpdateDataFromXML();
 
     Scanner scn = new Scanner(System.in);
 
@@ -35,6 +36,7 @@ public class Menu {
         System.out.println("+===========================+");
         System.out.println("|<6>Import From XML         |");
         System.out.println("|<7>Export To XML           |");
+        System.out.println("|<8>Update XML              |");
         System.out.println("+===========================+");
         System.out.println("|<0>Exit                    |");
         System.out.println("+===========================+");
@@ -51,6 +53,7 @@ public class Menu {
             case 5: sales.salesMenu();                  showMenu(); break;
             case 6: imp.importMenu();                   showMenu(); break;
             case 7: exp.exportMenu();                   showMenu(); break;
+            case 8: upd.updateMenu();                   showMenu(); break;
             case 0: exit(0);                                  break;
             default:
                 System.out.println("!!!Invalid Input!!!"); showMenu();

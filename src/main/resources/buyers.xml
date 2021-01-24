@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<buyers>
+    <buyer id="0">
+        <buyerName>Emelia</buyerName>
+        <buyerSurname>Finnegan</buyerSurname>
+        <acquisitions>24000.0</acquisitions>
+        <discount>10.0</discount>
+    </buyer>
+    <buyer id="1">
+        <buyerName>Charles</buyerName>
+        <buyerSurname>Dixon</buyerSurname>
+        <acquisitions>51000.0</acquisitions>
+        <discount>15.0</discount>
+    </buyer>
+</buyers>

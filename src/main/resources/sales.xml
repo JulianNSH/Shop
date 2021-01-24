@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<sales>
+    <sale id="0">
+        <productForSale>Xiaomi_Redmi_N9</productForSale>
+        <productPrice>4500.0</productPrice>
+        <discount>15.0</discount>
+        <afterDiscount>3825.0</afterDiscount>
+    </sale>
+    <sale id="1">
+        <productForSale>Samsung_GS20</productForSale>
+        <productPrice>18000.0</productPrice>
+        <discount>10.0</discount>
+        <afterDiscount>16200.0</afterDiscount>
+    </sale>
+    <sale id="2">
+        <productForSale>Google_Pixel_3</productForSale>
+        <productPrice>10000.0</productPrice>
+        <discount>15.0</discount>
+        <afterDiscount>8500.0</afterDiscount>
+    </sale>
+</sales>
