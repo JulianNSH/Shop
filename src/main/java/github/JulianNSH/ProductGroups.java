@@ -8,13 +8,15 @@ import static java.lang.System.exit;
 
 public class ProductGroups {
 
+    public static int[] groupId;
     public static String[] groupNameArr;
 
     public static int[] numberOfUnitsArr;
 
-    ProductGroups(){}
+    public ProductGroups(){}
     //method that alloc array dimensions, used for importing data from XML file
     public void allocateMemory(int index){
+        groupId = new int[index];
         groupNameArr = new String[index];
         numberOfUnitsArr = new int[index];
     }
@@ -51,6 +53,7 @@ public class ProductGroups {
         System.out.println(" Number of Groups>>> ");
         int i = scn.nextInt();
 
+        groupId = new int[i];
         groupNameArr = new String[i];
         numberOfUnitsArr = new int[i];
 
@@ -64,14 +67,18 @@ public class ProductGroups {
         if(groupNameArr != null){
             System.out.println("\n+======GROUP MODIFY======+");
             System.out.println(" Input ID of Group>>> ");
-            int i = scn.nextInt()-1;
-            //check if array with input ID exists
-            if(i>=0 && i<groupNameArr.length){
-                assignInputToArray(i);
-                System.out.println("~Group data was modified successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+            int i = scn.nextInt();
+            //find data with specified id
+            for (int j = 0; j< groupId.length; j++){
+                if (groupId[j]==i) {
+                    assignInputToArray(j);
+                    System.out.println("~ProductGroups data was modified successfully~");
+                }
+                if (j==groupId.length){
+                    System.out.println("ProductGroups with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
@@ -82,19 +89,25 @@ public class ProductGroups {
         if(groupNameArr != null){
             System.out.println("\n+======GROUP DELETE======+");
             System.out.println(" Input ID of Group>>> ");
-            int i = scn.nextInt()-1;
-            //check if array with input ID exists
-            if(i>=0 && i<groupNameArr.length){
-                groupNameArr = ArrayUtils.remove(groupNameArr, i);
-                numberOfUnitsArr = ArrayUtils.remove(numberOfUnitsArr, i);
+            int i = scn.nextInt();
+            //find data with specified id
+            for (int j = 0; j< groupId.length; j++){
+                if (groupId[j]==i) {
+                    groupId = ArrayUtils.remove(groupId, j);
+                    groupNameArr = ArrayUtils.remove(groupNameArr, j);
+                    numberOfUnitsArr = ArrayUtils.remove(numberOfUnitsArr, j);
 
-                System.out.println("~Product data was deleted successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+                    System.out.println("~ProductGroups data was modified successfully~");
+                }
+                if (j==groupId.length){
+                    System.out.println("ProductGroups with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
+
         productGroupsMenu();
     }
 
@@ -105,7 +118,7 @@ public class ProductGroups {
         if(groupNameArr != null) {
             for(int j=0; j<groupNameArr.length; j++) {
 
-                System.out.printf("|%-4s", j+1); System.out.printf("|%-19s",groupNameArr[j]);  System.out.printf("|%-13s|\n",numberOfUnitsArr[j]);
+                System.out.printf("|%-4s", groupId[j]); System.out.printf("|%-19s",groupNameArr[j]);  System.out.printf("|%-13s|\n",numberOfUnitsArr[j]);
             }
         } else {
             System.out.println("!!!Empty Data!!!");
@@ -116,6 +129,8 @@ public class ProductGroups {
 
     private void assignInputToArray(int index){
         System.out.printf("Group Nr-%s\n", index+1);
+        System.out.println("*ID: ");
+        groupId[index] = scn.nextInt();
         System.out.println("*GroupName: ");
         groupNameArr[index] = scn.next();
         System.out.println("*UnitsInGroup: ");

@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<groups>
-    <group id="0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><groups>
+    <group id="1">
         <groupName>Laptop</groupName>
         <numberOfUnits>20</numberOfUnits>
     </group>
-    <group id="1">
+    <group id="2">
         <groupName>Smartphones</groupName>
         <numberOfUnits>50</numberOfUnits>
     </group>
-    <group id="2">
+    <group id="3">
         <groupName>Accessories</groupName>
         <numberOfUnits>78</numberOfUnits>
     </group>

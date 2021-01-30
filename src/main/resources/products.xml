@@ -1,33 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<products>
-    <product id="0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><products>
+    <product id="1">
         <productName>Asus_TUF</productName>
-        <productGroup>Laptop</productGroup>
+        <productGroup>1</productGroup>
         <price>16000.0</price>
     </product>
-    <product id="1">
+    <product id="2">
         <productName>Lenovo_Ideapad</productName>
-        <productGroup>Laptop</productGroup>
+        <productGroup>1</productGroup>
         <price>9990.0</price>
     </product>
-    <product id="2">
+    <product id="3">
         <productName>Samsung_Galaxy_20</productName>
-        <productGroup>Smartphones</productGroup>
+        <productGroup>2</productGroup>
         <price>19000.0</price>
     </product>
-    <product id="3">
+    <product id="4">
         <productName>Xiaomi_Redmi_N8</productName>
-        <productGroup>Smartphones</productGroup>
+        <productGroup>2</productGroup>
         <price>3399.0</price>
     </product>
-    <product id="4">
+    <product id="5">
         <productName>Mi_Band_3</productName>
-        <productGroup>Accessories</productGroup>
+        <productGroup>3</productGroup>
         <price>599.0</price>
     </product>
-    <product id="5">
+    <product id="6">
         <productName>JBL_Headphones</productName>
-        <productGroup>Accessories</productGroup>
+        <productGroup>3</productGroup>
         <price>1400.0</price>
     </product>
 </products>

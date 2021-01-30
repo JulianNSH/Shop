@@ -8,6 +8,8 @@ import static java.lang.System.exit;
 
 public class BuyersCC {
 
+    public static int[] buyerId;
+
     public static String[] nameBuyerArr;
 
     public static String[] surnameBuyerArr;
@@ -16,10 +18,11 @@ public class BuyersCC {
 
     public static double[] discountArr;
 
-    BuyersCC(){}
+    public BuyersCC(){}
 
     //method that alloc array dimensions, used for importing data from XML file
     public void allocateMemory(int index){
+        buyerId = new int[index];
         nameBuyerArr = new String[index];
         surnameBuyerArr = new String[index];
         acquisitionsArr = new double[index];
@@ -57,6 +60,7 @@ public class BuyersCC {
         System.out.println(" Number Of ClubBuyers>>> ");
         int i = scn.nextInt();
 
+        buyerId = new int[i];
         nameBuyerArr = new String[i];
         surnameBuyerArr = new String[i];
         acquisitionsArr = new double[i];
@@ -72,14 +76,18 @@ public class BuyersCC {
         if(nameBuyerArr != null){
             System.out.println("\n+======BUYER MODIFY======+");
             System.out.println(" Input ID of Buyer>>> ");
-            int i = scn.nextInt()-1;
-            //check if array with input ID exists
-            if(i>=0 && i<nameBuyerArr.length){
-                assignInputToArray(i);
-                System.out.println("~Buyer data was modified successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+            int i = scn.nextInt();
+            //find data with specified id
+            for (int j = 0; j< buyerId.length; j++){
+                if (buyerId[j]==i) {
+                    assignInputToArray(j);
+                    System.out.println("~Buyer data was modified successfully~");
+                }
+                if (j==buyerId.length){
+                    System.out.println("Buyer with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
@@ -91,22 +99,27 @@ public class BuyersCC {
         if(nameBuyerArr != null){
             System.out.println("\n+======BUYER DELETE======+");
             System.out.println(" Input ID of Buyer>>> ");
-            int i = scn.nextInt()-1;
+            int i = scn.nextInt();
+            //find data with specified id
+            for (int j = 0; j< buyerId.length; j++){
+                if (buyerId[j]==i) {
+                    buyerId = ArrayUtils.remove(buyerId, j);
+                    nameBuyerArr = ArrayUtils.remove(nameBuyerArr, j);
+                    surnameBuyerArr = ArrayUtils.remove(surnameBuyerArr, j);
+                    acquisitionsArr = ArrayUtils.remove(acquisitionsArr, j);
+                    discountArr = ArrayUtils.remove(discountArr, j);
 
-            //check if array with input ID exists
-            if(i>=0 && i<nameBuyerArr.length){
-                nameBuyerArr = ArrayUtils.remove(nameBuyerArr, i);
-                surnameBuyerArr = ArrayUtils.remove(surnameBuyerArr, i);
-                acquisitionsArr = ArrayUtils.remove(acquisitionsArr, i);
-                discountArr = ArrayUtils.remove(discountArr, i);
-
-                System.out.println("~Buyer data was deleted successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+                    System.out.println("~Buyer data was modified successfully~");
+                }
+                if (j==buyerId.length){
+                    System.out.println("Buyer with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
+
         buyersMenu();
     }
 
@@ -116,7 +129,7 @@ public class BuyersCC {
         System.out.println("|--------------------------------------------------------------|");
         if(nameBuyerArr != null) {
             for(int j=0; j<nameBuyerArr.length; j++) {
-                System.out.printf("|%-4s", j+1);
+                System.out.printf("|%-4s", buyerId[j]);
                 System.out.printf("|%-15s",nameBuyerArr[j]); System.out.printf("|%-15s",surnameBuyerArr[j]);
                 System.out.printf("|%-14s",acquisitionsArr[j]);System.out.printf("|%-10s|\n",discountArr[j]);
             }
@@ -129,6 +142,8 @@ public class BuyersCC {
 
     private void assignInputToArray(int index){
         System.out.printf("Buyer Nr-%s\n", index+1);
+        System.out.println("*ID: ");
+        buyerId[index] = scn.nextInt();
         System.out.println("*BuyerName: ");
         nameBuyerArr[index] = scn.next();
         System.out.println("*BuyerSurname: ");

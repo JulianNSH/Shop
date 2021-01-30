@@ -7,21 +7,19 @@ import static java.lang.System.exit;
 
 public class Sales {
 
-    public static String[] nameProductSaleArr;
+    public static int[]  saleId;
 
-    public static double[] productPriceBeforeSaleArr;
+    public static int[] productId;
 
     public static double[] discountArr;
 
-    public static double[] priceAfterDiscountArr;
 
-    Sales(){}
+    public Sales(){}
 
     //method that alloc array dimensions, used for importing data from XML file
     public void allocateMemory(int index){
-        nameProductSaleArr = new String[index];
-        productPriceBeforeSaleArr = new double[index];
-        priceAfterDiscountArr = new double[index];
+        saleId = new int[index];
+        productId = new int[index];
         discountArr = new double[index];
     }
     Scanner scn = new Scanner(System.in);
@@ -55,10 +53,9 @@ public class Sales {
         System.out.println(" Number of SALES>>> ");
         int i = scn.nextInt();
 
-        nameProductSaleArr = new String[i];
+        saleId = new int[i];
+        productId = new int[i];
         discountArr = new double[i];
-        productPriceBeforeSaleArr = new double[i];
-        priceAfterDiscountArr = new double[i];
 
         for (int j = 0; j<i; j++){
             assignInputToArray(j);
@@ -67,17 +64,21 @@ public class Sales {
     }
 
     private void modifySalesData(){
-        if(nameProductSaleArr != null){
+        if(saleId != null){
             System.out.println("\n+======SALES MODIFY======+");
             System.out.println(" Input ID of Sale>>> ");
             int i = scn.nextInt()-1;
-            //check if array with input ID exists
-            if(i>=0 && i<nameProductSaleArr.length){
-                assignInputToArray(i);
-                System.out.println("~Sale data was modified successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+            //find data with specified id
+            for (int j = 0; j< saleId.length; j++){
+                if (saleId[j]==i) {
+                    assignInputToArray(j);
+                    System.out.println("~Sales data was modified successfully~");
+                }
+                if (j==saleId.length){
+                    System.out.println("Sales with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
@@ -85,54 +86,53 @@ public class Sales {
     }
 
     private void deleteSalesData(){
-        if(nameProductSaleArr != null){
+        if(saleId != null){
             System.out.println("\n+======SALES DELETE======+");
             System.out.println(" Input ID of Sale>>> ");
             int i = scn.nextInt()-1;
-
-            //check if array with input ID exists
-            if(i>=0 && i<nameProductSaleArr.length){
-                nameProductSaleArr = ArrayUtils.remove(nameProductSaleArr, i);
-                discountArr = ArrayUtils.remove(discountArr, i);
-                productPriceBeforeSaleArr = ArrayUtils.remove(priceAfterDiscountArr, i);
-                priceAfterDiscountArr = ArrayUtils.remove(priceAfterDiscountArr, i);
-
-                System.out.println("~Sale data was deleted successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+            //find data with specified id
+            for (int j = 0; j< saleId.length; j++){
+                if (saleId[j]==i) {
+                    saleId = ArrayUtils.remove(saleId, j);
+                    productId = ArrayUtils.remove(productId, j);
+                    discountArr = ArrayUtils.remove(discountArr, j);
+                    System.out.println("~Sales data was modified successfully~");
+                }
+                if (j==saleId.length){
+                    System.out.println("Sales with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
+
         salesMenu();
     }
 
     private void showSalesData(){
         System.out.println("\n+======LIST PRODUCTS FOR SALE======+");
-        System.out.print(  "|ID  |Product          |Price      |Discount %   |PriceWithDiscount    |\n");
-        System.out.println("|----------------------------------------------------------------------|");
-        if(nameProductSaleArr != null) {
-            for(int j=0; j<nameProductSaleArr.length; j++) {
-                System.out.printf("|%-4s", j+1);
-                System.out.printf("|%-17s",nameProductSaleArr[j]);System.out.printf("|%-11s",productPriceBeforeSaleArr[j]);
-                System.out.printf("|%-13s",discountArr[j]);  System.out.printf("|%-21s|\n",priceAfterDiscountArr[j]);
+        System.out.print(  "|ID  |ProductID     |Discount %      |\n");
+        System.out.println("|------------------------------------|");
+        if(saleId != null) {
+            for(int j=0; j<saleId.length; j++) {
+                System.out.printf("|%-4s", saleId[j]);System.out.printf("|%-14s", productId[j]);
+                System.out.printf("|%-16s",discountArr[j]);
             }
         } else {
             System.out.println("!!!Empty Data!!!");
         }
-        System.out.println("|----------------------------------------------------------------------|");
+        System.out.println("|------------------------------------|");
         salesMenu();
     }
 
     private void assignInputToArray(int index){
         System.out.printf("SALE Nr-%s\n", index+1);
-        System.out.println("*ProductForSale: ");
-        nameProductSaleArr[index] = scn.next();
-        System.out.println("*ProductPrice %: ");
-        productPriceBeforeSaleArr[index] = scn.nextDouble();
+        System.out.println("*ID: ");
+        saleId[index] = scn.nextInt();
+        System.out.println("*ProductID: ");
+        productId[index] = scn.nextInt();
         System.out.println("*Discount %: ");
         discountArr[index] = scn.nextDouble();
-        System.out.println("*PriceAfterDiscount: ");
-        priceAfterDiscountArr[index] = scn.nextDouble();
     }
 }

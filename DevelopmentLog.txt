@@ -20,3 +20,10 @@
 
 >>>2.2 - Has been added Update feature
        - Was created XML files through console and filled it with data
+
+-------------------PHASE III-------------------
+                   (console)
+>>>3.1  -Modified structure of entities for further operating with database
+        (Was added separated ID fields for indexing input)
+        - Was created database and established connection with it
+        (Were used PostgreSQL and DBeaver for database management)

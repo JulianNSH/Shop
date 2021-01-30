@@ -9,17 +9,20 @@ import static java.lang.System.exit;
 
 public class Products {
 
-    public static String[] productGroupArr;
+    public static int[] productId;
+
+    public static int[] productGroupIdArr;
 
     public static String[] productNameArr;
 
     public static double[] priceArr;
 
-    Products(){}
+    public Products(){}
 
     //method that alloc array dimensions, used for importing data from XML file
     public void allocateMemory(int index){
-        productGroupArr = new String[index];
+        productId = new int[index];
+        productGroupIdArr = new int[index];
         productNameArr = new String[index];
         priceArr = new double[index];
     }
@@ -55,8 +58,9 @@ public class Products {
         System.out.println(" Number of Products>>> ");
         int i = scn.nextInt();
 
+        productId = new int[i];
         productNameArr = new String[i];
-        productGroupArr = new String[i];
+        productGroupIdArr = new int[i];
         priceArr = new double[i];
 
         for (int j = 0; j<i; j++){
@@ -69,14 +73,19 @@ public class Products {
         if(productNameArr != null){
         System.out.println("\n+======PRODUCTS CREATE======+");
         System.out.println(" Input ID of Product>>> ");
-        int i = scn.nextInt()-1;
-            //check if array with input ID exists
-            if(i>=0 && i<productNameArr.length){
-                assignInputToArray(i);
-                System.out.println("~Product data was modified successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+        int i = scn.nextInt();
+
+            //find data with specified id
+            for (int j = 0; j< productId.length; j++){
+                if (productId[j]==i) {
+                    assignInputToArray(j);
+                    System.out.println("~Product data was modified successfully~");
+                }
+                if (j==productId.length){
+                    System.out.println("Product with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
@@ -86,45 +95,53 @@ public class Products {
         if(productNameArr != null){
             System.out.println("\n+======PRODUCTS DELETE======+");
             System.out.println(" Input ID of Product>>> ");
-            int i = scn.nextInt()-1;
-            //check if array with input ID exists
-            if(i>=0 && i<productNameArr.length){
-                productNameArr = ArrayUtils.remove(productNameArr, i);
-                productGroupArr = ArrayUtils.remove(productGroupArr, i);
-                priceArr = ArrayUtils.remove(priceArr, i);
-                System.out.println("~Product data was deleted successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+            int i = scn.nextInt();
+            //find data with specified id
+            for (int j = 0; j< productId.length; j++){
+                if (productId[j]==i) {
+                    productId = ArrayUtils.remove(productId, j);
+                    productNameArr = ArrayUtils.remove(productNameArr, j);
+                    productGroupIdArr = ArrayUtils.remove(productGroupIdArr, j);
+                    priceArr = ArrayUtils.remove(priceArr, j);
+                    System.out.println("~Product data was deleted successfully~");
+                }
+                if (j==productId.length){
+                    System.out.println("Product with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
+
         productsMenu();
     }
     private void showProductsData(){
         System.out.println("\n+======LIST OF PRODUCTS======+");
-        System.out.print(  "|ID  |Product          |GroupOfProduct   |Price    |\n");
-        System.out.println("|--------------------------------------------------|");
+        System.out.print(  "|ID  |Product          |GroupId   |Price    |\n");
+        System.out.println("|-------------------------------------------|");
         if(productNameArr != null) {
             for(int j=0; j<productNameArr.length; j++) {
 
-                System.out.printf("|%-4s", j+1); System.out.printf("|%-17s",productNameArr[j]);
-                System.out.printf("|%-17s",productGroupArr[j]);  System.out.printf("|%-9s|\n",priceArr[j]);
+                System.out.printf("|%-4s", productId[j]); System.out.printf("|%-17s",productNameArr[j]);
+                System.out.printf("|%-10s", productGroupIdArr[j]);  System.out.printf("|%-9s|\n",priceArr[j]);
             }
         } else {
             System.out.println("!!!Empty Data!!!");
         }
-        System.out.println("|--------------------------------------------------|");
+        System.out.println("|-------------------------------------------|");
         productsMenu();
     }
 
     //method for input data, used to avoid code repeat
     private void assignInputToArray(int index){
         System.out.printf("Product Nr-%s\n", index+1);
+        System.out.println("*ID: ");
+        productId[index] = scn.nextInt();
         System.out.println("*Name: ");
         productNameArr[index] = scn.next();
-        System.out.println("*GroupName: ");
-        productGroupArr[index] = scn.next();
+        System.out.println("*GroupID: ");
+        productGroupIdArr[index] = scn.nextInt();
         System.out.println("*ProductPrice: ");
         priceArr[index] = scn.nextDouble();
     }

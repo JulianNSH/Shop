@@ -10,7 +10,7 @@ import static java.lang.System.exit;
 
 public class Employees {
     //declaring the basic variables(arrays) of the entity
-
+    public static int[]    employeeId;
     public static String[] nameArr;// array for holding info in memory
 
     public static String[] surnameArr;
@@ -21,9 +21,10 @@ public class Employees {
 
     public static  double[] salaryArr;
 
-    Employees(){}
+    public Employees(){}
     //method that alloc array dimensions, used for importing data from XML file
     public void allocateMemory(int index){
+        employeeId = new int[index];
         nameArr = new String[index];
         surnameArr = new String[index];
         positionArr = new String[index];
@@ -67,6 +68,7 @@ public class Employees {
         int i = scn.nextInt();
 
         //memory allocation in declared arrays
+        employeeId = new int[i];
         nameArr = new String[i];
         surnameArr = new String[i];
         positionArr = new String[i];
@@ -86,15 +88,19 @@ public class Employees {
         if(nameArr != null){
             System.out.println("\n+======EMPLOYEES MODIFY======+");
             System.out.println(" Input ID to modify>>> ");
-            int i = scn.nextInt()-1;
+            int i = scn.nextInt();
 
-            //check if array with input ID exists
-            if(i>=0 && i<nameArr.length){
-                assignInputToArray(i);
-                System.out.println("~Employee data was modified successfully~");
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+            //find data with specified id
+            for (int j = 0; j< employeeId.length; j++){
+                if (employeeId[j]==i) {
+                    assignInputToArray(j);
+                    System.out.println("~Employee data was modified successfully~");
+                }
+                if (j==employeeId.length){
+                    System.out.println("Employee with given ID doesn't exist");
+                }
             }
+
         } else {
             System.out.println("!!!Empty Data!!!");
         }
@@ -106,20 +112,22 @@ public class Employees {
         if(nameArr != null){
             System.out.println("\n+======EMPLOYEES DELETE======+");
             System.out.println(" Input ID to delete>>> ");
-            int i = scn.nextInt()-1;
+            int i = scn.nextInt();
+            //find data with specified id
+            for (int j = 0; j< employeeId.length; j++){
+                if (employeeId[j]==i) {
+                    employeeId = ArrayUtils.remove(employeeId, j);//using method from imported library
+                    nameArr = ArrayUtils.remove(nameArr, j);
+                    surnameArr = ArrayUtils.remove(surnameArr, j);
+                    positionArr = ArrayUtils.remove(positionArr, j);
+                    ageArr = ArrayUtils.remove(ageArr, j);
+                    salaryArr = ArrayUtils.remove(salaryArr, j);
 
-            //check if array with input ID exists
-            if(i>=0 && i<nameArr.length){
-                nameArr = ArrayUtils.remove(nameArr, i); //using method from imported library
-                surnameArr = ArrayUtils.remove(surnameArr, i);
-                positionArr = ArrayUtils.remove(positionArr, i);
-                ageArr = ArrayUtils.remove(ageArr, i);
-                salaryArr = ArrayUtils.remove(salaryArr, i);
-
-                System.out.println("~Employee data was deleted successfully~");
-
-            } else {
-                System.out.println("!!!Input ID doesn't exist!!!");
+                    System.out.println("~Employee data was deleted successfully~");
+                }
+                if (j==employeeId.length){
+                    System.out.println("Employee with given ID doesn't exist");
+                }
             }
         } else {
             System.out.println("!!!Empty Data!!!");
@@ -137,7 +145,7 @@ public class Employees {
         if(nameArr != null) {
            for(int j=0; j<nameArr.length; j++) {
 
-               System.out.printf("|%-4s", j+1); System.out.printf("|%-10s",nameArr[j]); System.out.printf("|%-10s",surnameArr[j]);
+               System.out.printf("|%-4s", employeeId[j]); System.out.printf("|%-10s",nameArr[j]); System.out.printf("|%-10s",surnameArr[j]);
                System.out.printf("|%-10s",positionArr[j]);System.out.printf("|%-3s",ageArr[j]); System.out.printf("|%-8s|\n",salaryArr[j]);
             }
         } else {
@@ -149,7 +157,9 @@ public class Employees {
 
     //method for input data, used to avoid code repeat
     private void assignInputToArray(int index){
-        System.out.printf("Employee ID-%s\n", index+1);
+        System.out.printf("Employee Nr-%s\n", index+1);
+        System.out.println("*ID: ");
+        employeeId[index] = scn.nextInt();
         System.out.println("*Name: ");
         nameArr[index] = scn.next();
         System.out.println("*Surname: ");
