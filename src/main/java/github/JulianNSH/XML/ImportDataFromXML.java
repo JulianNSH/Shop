@@ -27,7 +27,7 @@ public class ImportDataFromXML {
 
     public int importMenu() throws ParserConfigurationException, IOException, SAXException {
 
-        System.out.println("\n+==========IMPORT==========+");
+        System.out.println("\n+========XML IMPORT========+");
         System.out.println("|<1>ALL                    |");
         System.out.println("|<2>Employees              |");
         System.out.println("|<3>Products               |");

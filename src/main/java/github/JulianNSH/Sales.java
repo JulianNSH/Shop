@@ -117,7 +117,7 @@ public class Sales {
         if(saleId != null) {
             for(int j=0; j<saleId.length; j++) {
                 System.out.printf("|%-4s", saleId[j]);System.out.printf("|%-14s", productId[j]);
-                System.out.printf("|%-16s",discountArr[j]);
+                System.out.printf("|%-16s|\n",discountArr[j]);
             }
         } else {
             System.out.println("!!!Empty Data!!!");

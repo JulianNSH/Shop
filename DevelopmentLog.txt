@@ -27,3 +27,11 @@
         (Was added separated ID fields for indexing input)
         - Was created database and established connection with it
         (Were used PostgreSQL and DBeaver for database management)
+
+>>>3.2  Was added
+        - Dump files of the DB (with and without data)
+        - Export class to save data from memory to empty tables in DataBase (use for test 'dump-shop-empty.sql')
+        - Import class to get data from DataBase into the memory (use for test 'dump-shop-datafilled.sql')
+        - Show class that displays tables from DataBase
+            and also offers the possibility to modify the data through the options(add,update, delete)
+             directly in the database

@@ -1,6 +1,7 @@
 package github.JulianNSH;
 import github.JulianNSH.DataBase.ExportDataToDataBase;
 import github.JulianNSH.DataBase.ImportDataFromDataBase;
+import github.JulianNSH.DataBase.ShowDataFromDataBase;
 import github.JulianNSH.XML.ExportDataToXML;
 import github.JulianNSH.XML.ImportDataFromXML;
 import github.JulianNSH.XML.UpdateDataFromXML;
@@ -26,7 +27,8 @@ public class Menu {
     ExportDataToXML expXML = new ExportDataToXML();
     UpdateDataFromXML updXML = new UpdateDataFromXML();
 
-    //objects for Import/Export/Update existent data in DataBase
+    //objects for Show/Import/Export existent data in DataBase
+    ShowDataFromDataBase showDB = new ShowDataFromDataBase();
     ImportDataFromDataBase impDB = new ImportDataFromDataBase();
     ExportDataToDataBase expDB = new ExportDataToDataBase();
 
@@ -48,9 +50,9 @@ public class Menu {
         System.out.println("|<7>Export To XML           |");
         System.out.println("|<8>Update XML              |");
         System.out.println("+===========================+");
-        System.out.println("|<9> Import From DataBase   |");
+        System.out.println("|<9> Show DataBases         |");
         System.out.println("|<10>Export To DataBase     |");
-        System.out.println("|<11>Update DataBase        |");
+        System.out.println("|<11>Import From DataBase   |");
         System.out.println("+===========================+");
         System.out.println("|<0>Exit                    |");
         System.out.println("+===========================+");
@@ -65,10 +67,12 @@ public class Menu {
             case 3: productGroups.productGroupsMenu();  showMenu(); break;
             case 4: buyersCC.buyersMenu();              showMenu(); break;
             case 5: sales.salesMenu();                  showMenu(); break;
-            case 6: impXML.importMenu();                   showMenu(); break;
-            case 7: expXML.exportMenu();                   showMenu(); break;
-            case 8: updXML.updateMenu();                   showMenu(); break;
-           // case 10: expDB.connect();                      showMenu(); break;
+            case 6: impXML.importMenu();                showMenu(); break;
+            case 7: expXML.exportMenu();                showMenu(); break;
+            case 8: updXML.updateMenu();                showMenu(); break;
+            case 9: showDB.showDBaseMenu();             showMenu(); break;
+            case 10: expDB.exportDBaseMenu();           showMenu(); break;
+            case 11: impDB.importDBaseMenu();           showMenu(); break;
             case 0: exit(0);                                  break;
             default:
                 System.out.println("!!!Invalid Input!!!"); showMenu();

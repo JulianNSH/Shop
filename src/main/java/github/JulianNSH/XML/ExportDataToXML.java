@@ -31,7 +31,7 @@ public class ExportDataToXML  {
 
     public int exportMenu() throws TransformerException {
 
-        System.out.println("\n+==========EXPORT==========+");
+        System.out.println("\n+========XML EXPORT========+");
         System.out.println("|<1>ALL                    |");
         System.out.println("|<2>Employees              |");
         System.out.println("|<3>Products               |");

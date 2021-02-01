@@ -1,6 +1,7 @@
 package github.JulianNSH;
 
 import github.JulianNSH.DataBase.ExportDataToDataBase;
+import github.JulianNSH.DataBase.ImportDataFromDataBase;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +21,6 @@ public class Shop {
     public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException, SAXException, SQLException {
         Menu start = new Menu();
         start.showMenu();           //call the menu method
-//        ExportDataToDataBase exp = new  ExportDataToDataBase();
-//        exp.exportDBMenu();
+
     }
 }

@@ -32,7 +32,7 @@ public class UpdateDataFromXML {
 
     public int updateMenu() throws ParserConfigurationException, SAXException, IOException, TransformerException {
 
-        System.out.println("\n+==========UPDATE==========+");
+        System.out.println("\n+========XML UPDATE========+");
         System.out.println("|<1>ALL                    |");
         System.out.println("|<2>Employees              |");
         System.out.println("|<3>Products               |");
