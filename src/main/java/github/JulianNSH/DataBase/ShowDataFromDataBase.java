@@ -15,14 +15,14 @@ public class ShowDataFromDataBase {
     //method that shows menu
     public int showDBaseMenu() throws SQLException {
         System.out.println("\n+========SHOW DATABASE========+");
-        System.out.println("|<1>Employees             |");
-        System.out.println("|<2>Buyers With Club Cards|");
-        System.out.println("|<3>Product Groups        |");
-        System.out.println("|<4>Products              |");
-        System.out.println("|<5>Sales                 |");
-        System.out.println("|<7>                <<Back|");
-        System.out.println("|<0>Exit                  |");
-        System.out.println("+=========================+");
+        System.out.println("|<1>Employees                 |");
+        System.out.println("|<2>Buyers With Club Cards    |");
+        System.out.println("|<3>Product Groups            |");
+        System.out.println("|<4>Products                  |");
+        System.out.println("|<5>Sales                     |");
+        System.out.println("|<6>                    <<Back|");
+        System.out.println("|<0>Exit                      |");
+        System.out.println("+=============================+");
         System.out.println("Enter Option>>>  ");
 
         int i = scn.nextInt();

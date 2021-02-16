@@ -105,8 +105,6 @@ public class UpdateDataFromXML {
                             }
                         }
                     }
-                } else {
-                    System.out.println("!!!Fields for Update doesn't exist in XML file.Export data first.!!!");
                 }
 
                 //write content into XML file
@@ -164,8 +162,6 @@ public class UpdateDataFromXML {
                             }
                         }
                     }
-                } else {
-                    System.out.println("!!!Fields for Update doesn't exist in XML file.Export data first.!!!");
                 }
 
                 //write content into XML file
@@ -219,8 +215,6 @@ public class UpdateDataFromXML {
                             }
                         }
                     }
-                } else {
-                    System.out.println("!!!Fields for Update doesn't exist in XML file.Export data first.!!!");
                 }
 
                 //write content into XML file
@@ -275,8 +269,6 @@ public class UpdateDataFromXML {
                             }
                         }
                     }
-                } else {
-                    System.out.println("!!!Fields for Update doesn't exist in XML file.Export data first.!!!");
                 }
 
                 //write content into XML file
@@ -329,8 +321,6 @@ public class UpdateDataFromXML {
                             }
                         }
                     }
-                } else {
-                    System.out.println("!!!Fields for Update doesn't exist in XML file.Export data first.!!!");
                 }
 
                 //write content into XML file
