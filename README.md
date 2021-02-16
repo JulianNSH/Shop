@@ -73,4 +73,4 @@ Features
 
 ![alt text](https://github.com/JulianNSH/Shop/blob/master/screenshots/screen12.1.png?raw=true "Import result")
 
-- !You can realise exporting data only to empty tables of database!
+- !You can export data only to empty tables of database (dump/dump-shop-empty.sql)!
