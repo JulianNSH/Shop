@@ -14,7 +14,7 @@ at 3 levels of data storage: operative memory, physical and database.
 
 Instruments
 ------
-* Java version 12.0.2
+* JDK 1.8
 * Build: Maven 4.0.0
 * Database: PostgreSQL 13
 * Physical storage: XML
